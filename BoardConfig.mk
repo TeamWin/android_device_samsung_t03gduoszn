@@ -26,6 +26,7 @@ endif
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_SOC := exynos4210
@@ -54,7 +55,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 
 # Recovery: set depending on recovery being built for. (CWM or TWRP)
 #           both init scripts can be found in the recovery folder
-TARGET_RECOVERY_INITRC := device/samsung/t03gduoszn/recovery/init.rc
+#TARGET_RECOVERY_INITRC := device/samsung/t03gduoszn/recovery/init.rc
 
 # TWRP specific build flags
 BOARD_USE_CUSTOM_RECOVERY_FONT:= \"roboto_15x24.h\"
@@ -74,18 +75,20 @@ SP1_MOUNTABLE := 1
 SP2_NAME := "modem"
 SP2_BACKUP_METHOD := image
 SP2_MOUNTABLE := 0
-TW_INCLUDE_FUSE_EXFAT := true
-TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_CRYPTO_SAMSUNG := true
+#TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/virtual/android_usb/android0/f_mass_storage/lun0/file
+TW_INCLUDE_JB_CRYPTO := true
+#TW_INCLUDE_CRYPTO_SAMSUNG := true
 TW_CRYPTO_FS_TYPE := "ext4"
 TW_CRYPTO_REAL_BLKDEV := "/dev/block/mmcblk0p16"
 TW_CRYPTO_MNT_POINT := "/data"
 TW_CRYPTO_FS_OPTIONS := "noatime,nosuid,nodev,discard,noauto_da_alloc,journal_async_commit,errors=panic wait,check,encryptable=footer"
 TW_CRYPTO_FS_FLAGS := "0x00000406"
 TW_CRYPTO_KEY_LOC := "footer"
-TW_BRIGHTNESS_PATH := "/sys/devices/platform/s5p-dsim.0/s6evr02/backlight/panel/brightness"
+TW_BRIGHTNESS_PATH := "/brightness"
+#TW_BRIGHTNESS_PATH := "/sys/devices/platform/s5p-dsim.0/s6evr02/backlight/panel/brightness"
 TW_MAX_BRIGHTNESS := 255
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 TW_INCLUDE_FB2PNG := true
 TW_NO_EXFAT_FUSE := true
-USE_SELINUX := true
+TW_NO_EXFAT := true
